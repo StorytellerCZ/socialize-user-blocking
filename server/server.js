@@ -6,6 +6,15 @@ import { Meteor } from 'meteor/meteor';
 import { Block, BlocksCollection } from '../common/common.js';
 import './publications.js';
 
+try {
+    BlocksCollection.createIndexAsync({ userId: 1 });
+    BlocksCollection.createIndexAsync({ blockedUserId: 1 });
+    BlocksCollection.createIndexAsync({ userId: 1, blockedUserId: 1 });
+    BlocksCollection.createIndexAsync({ createdAt: -1 });
+} catch(e) {
+    console.debug('Failed to create indexes for user blocking collection.');
+}
+
 // array to store functions that run when a user gets blocked
 const onHooks = [];
 

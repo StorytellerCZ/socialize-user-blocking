@@ -6,8 +6,9 @@ export default ({ BaseModel, ServerTime, Mongo }) => {
     const BlocksCollection = new Mongo.Collection('socialize:blocks');
 
     class Block extends BaseModel {
-        isDuplicate() {
-            return !!BlocksCollection.findOne({ userId: this.userId, blockedUserId: this.blockedUserId });
+        async isDuplicate() {
+            const block = await BlocksCollection.findOneAsync({ userId: this.userId, blockedUserId: this.blockedUserId });
+            return !!block
         }
     }
 
@@ -23,13 +24,11 @@ export default ({ BaseModel, ServerTime, Mongo }) => {
                 }
                 return undefined;
             },
-            index: 1,
             denyUpdate: true,
         },
         blockedUserId: {
             type: String,
             regEx: SimpleSchema.RegEx.Id,
-            index: 1,
             denyUpdate: true,
         },
         createdAt: {
@@ -40,7 +39,6 @@ export default ({ BaseModel, ServerTime, Mongo }) => {
                 }
                 return undefined;
             },
-            index: -1,
             denyUpdate: true,
         },
     });
