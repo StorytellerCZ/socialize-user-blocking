@@ -7,12 +7,12 @@ Package.describe({
 });
 
 Package.onUse(function _(api) {
-    api.versionsFrom(['2.8.1', '3.0-rc.0']);
+    api.versionsFrom(['2.8.1', '3.0']);
     api.use([
         'check',
         'reywood:publish-composite@1.8.9',
         'socialize:user-model@2.0.0',
-        'aldeed:simple-schema@1.13.1'
+        'aldeed:simple-schema@1.13.1 || 2.0.0'
     ]);
     api.imply('socialize:user-model');
     api.mainModule('server/server.js', 'server');
