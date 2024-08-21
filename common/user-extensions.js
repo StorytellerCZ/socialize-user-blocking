@@ -35,7 +35,7 @@ export default ({ Meteor, User, Block, BlocksCollection }) => {
         async blocksUserAsync(user) {
             let blocked = false;
             if (!user) {
-              user = await Meteor.user();
+              user = await Meteor.userAsync();
             }
             const isFriends = await this.isFriendsWith(user._id);
             if (!this.isSelf(user) && !isFriends) {
