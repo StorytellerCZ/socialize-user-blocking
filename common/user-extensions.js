@@ -20,10 +20,11 @@ export default ({ Meteor, User, Block, BlocksCollection }) => {
          * @param   {Object}  [user=Meteor.user()] The user instance to check
          * @returns {Boolean} Whether or not the user is blocked
          */
-        blocksUser(user = Meteor.user()) {
+        blocksUser(user ) {
             if (Meteor.isServer) {
-                return this.blocksUserAsync(user._id);
+                return this.blocksUserAsync(user);
             }
+            if (!user) user = Meteor.user()
             const self = this;
             let blocked = false;
 
