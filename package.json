@@ -27,7 +27,7 @@
         "@socialize/user-model": "^1.0.5"
     },
     "devDependencies": {
-        "rimraf": "^5.0.10"
+        "rimraf": "^6.0.1"
     },
     "funding": [
         {
