@@ -42,10 +42,11 @@ publishComposite('socialize.blocksUserById', function publishBlockedUsers(lookup
     if (!this.userId) {
         return this.ready();
     }
+    const currentUserId = this.userId;
 
     return {
         find() {
-            return BlocksCollection.find({ userId: this._id, blockedUserId: lookupUserId }, { limit: 1 });
+            return BlocksCollection.find({ userId: currentUserId, blockedUserId: lookupUserId }, { limit: 1 });
         },
         children: [
             {
