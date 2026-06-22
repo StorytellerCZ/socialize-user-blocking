@@ -12,7 +12,7 @@ Package.onUse(function _(api) {
         'check',
         'reywood:publish-composite@1.8.9',
         'socialize:user-model@2.0.0',
-        'aldeed:simple-schema@1.13.1 || 2.0.0'
+        'aldeed:simple-schema@2.0.0 || 3.0.0'
     ]);
     api.imply('socialize:user-model');
     api.mainModule('server/server.js', 'server');
